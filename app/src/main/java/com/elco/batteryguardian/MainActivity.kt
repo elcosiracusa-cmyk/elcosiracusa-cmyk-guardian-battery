@@ -249,8 +249,14 @@ class MainActivity : AppCompatActivity() {
             binding.premiumChargeGuardText.text = getString(R.string.premium_locked_charge_guard)
         }
 
-        updateUsageSection()
-        BatteryWidgetRenderer.updateAll(this)
+        runCatching { updateUsageSection() }
+            .onFailure {
+                binding.usageText.text = getString(R.string.usage_permission_needed)
+                binding.usageAccessButton.isEnabled = true
+            }
+
+        // Widget rendering must never be allowed to crash the foreground dashboard.
+        runCatching { BatteryWidgetRenderer.updateAll(this) }
     }
 
     private fun updateUsageSection() {
