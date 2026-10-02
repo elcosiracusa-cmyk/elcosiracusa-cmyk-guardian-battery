@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, ReferralRewardManager.shareText(this@MainActivity))
             }
-            startActivity(Intent.createChooser(shareIntent, "Invita amici"))
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_chooser)))
         }
 
         binding.modeButton.setOnClickListener {
@@ -210,8 +210,8 @@ class MainActivity : AppCompatActivity() {
 
         val referral = ReferralRewardManager.status(this)
         binding.referralProgress.progress = referral.verifiedFriends
-        binding.referralProgressText.text = "${referral.verifiedFriends}/${referral.requiredFriends} amici verificati"
-        binding.referralCodeText.text = "Codice invito: ${referral.referralCode}"
+        binding.referralProgressText.text = getString(R.string.referral_progress, referral.verifiedFriends, referral.requiredFriends)
+        binding.referralCodeText.text = getString(R.string.referral_code, referral.referralCode)
 
         binding.premiumModeText.text = getString(
             R.string.premium_mode_value,
@@ -222,9 +222,9 @@ class MainActivity : AppCompatActivity() {
             val source = EntitlementRepository.premiumSource(this)
             val rewardDays = EntitlementRepository.rewardDaysRemaining(this)
             binding.premiumStatusText.text = if (rewardDays > 0) {
-                "PLUS ATTIVO · $source · $rewardDays giorni rimasti"
+                getString(R.string.plus_active_reward, source, rewardDays)
             } else {
-                "PLUS ATTIVO · $source"
+                getString(R.string.plus_active_source, source)
             }
             binding.premiumBudgetText.text = getString(
                 R.string.premium_budget_value,
