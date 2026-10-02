@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="18dp">
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="18dp"
+        android:paddingTop="44dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,7 +73,10 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
                 android:text="@string/action_dna"
-                app:backgroundTint="@color/purple_accent" />
+                app:backgroundTint="@color/purple_accent" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/leakButton"
@@ -79,7 +85,10 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:text="@string/action_leak"
-                app:backgroundTint="@color/orange_accent" />
+                app:backgroundTint="@color/orange_accent" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -96,7 +105,10 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
                 android:text="@string/action_budget"
-                app:backgroundTint="@color/blue_accent" />
+                app:backgroundTint="@color/blue_accent" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/chargeGuardButton"
@@ -105,7 +117,10 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:text="@string/action_charge_guard"
-                app:backgroundTint="@color/green_primary" />
+                app:backgroundTint="@color/green_primary" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +137,10 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
                 android:text="@string/action_widget"
-                app:backgroundTint="@color/cyan_accent" />
+                app:backgroundTint="@color/cyan_accent" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/displayButton"
@@ -131,7 +149,10 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:text="@string/action_display"
-                app:backgroundTint="@color/orange_accent" />
+                app:backgroundTint="@color/orange_accent" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -140,7 +161,10 @@
             android:layout_height="68dp"
             android:layout_marginTop="10dp"
             android:text="@string/action_mode"
-            app:backgroundTint="@color/green_primary" />
+            app:backgroundTint="@color/green_primary" 
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/batterySummaryCard"
