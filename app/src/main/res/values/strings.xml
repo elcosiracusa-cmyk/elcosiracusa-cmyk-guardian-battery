@@ -35,4 +35,26 @@
     <string name="open_power_saver">Apri Risparmio energetico Android</string>
     <string name="open_optimization">Gestisci ottimizzazione batteria</string>
     <string name="refresh">Aggiorna analisi</string>
+
+
+    <string name="widget_compact_title">Battery Guardian</string>
+    <string name="widget_activity_title">Guardian Activity</string>
+    <string name="widget_compact_description">Batteria, assorbimento, potenza e temperatura sulla Home.</string>
+    <string name="widget_activity_description">Attività energetica, scarica osservata e app più usata.</string>
+    <string name="widget_percent">%1$d%%</string>
+    <string name="widget_score">Score %1$d/100</string>
+    <string name="widget_current">%1$d mA</string>
+    <string name="widget_current_unknown">mA non disponibili</string>
+    <string name="widget_power">%1$.2f W</string>
+    <string name="widget_power_unknown">W non disponibili</string>
+    <string name="widget_temperature">%1$.1f °C</string>
+    <string name="widget_pressure">Pressione: %1$s</string>
+    <string name="widget_drain">Scarica: ~%1$.1f%%/ora</string>
+    <string name="widget_drain_learning">Scarica: in apprendimento</string>
+    <string name="widget_top_app">%1$s · %2$d min</string>
+    <string name="widget_top_app_unavailable">App più attiva: accesso utilizzo richiesto</string>
+    <string name="widget_zero_wake">Zero-Wake · nessun polling continuo</string>
+    <string name="widget_last_update">Aggiornato: %1$s</string>
+    <string name="widget_refresh">AGGIORNA</string>
+    <string name="widget_loading">Caricamento…</string>
 </resources>
