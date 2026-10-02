@@ -58,6 +58,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(Settings.ACTION_HOME_SETTINGS))
         }
 
+        binding.inviteFriendsButton.setOnClickListener {
+            val referral = ReferralRewardManager.status(this)
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, ReferralRewardManager.shareText(this@MainActivity))
+            }
+            startActivity(Intent.createChooser(shareIntent, "Invita amici"))
+        }
+
         binding.modeButton.setOnClickListener {
             val current = GuardianPreferences.batteryMode(this)
             val next = when (current) {
@@ -198,6 +207,11 @@ class MainActivity : AppCompatActivity() {
             dnaProfile.samples
         )
         binding.dnaAdviceText.text = dnaAdvice.detail
+
+        val referral = ReferralRewardManager.status(this)
+        binding.referralProgress.progress = referral.verifiedFriends
+        binding.referralProgressText.text = "${referral.verifiedFriends}/${referral.requiredFriends} amici verificati"
+        binding.referralCodeText.text = "Codice invito: ${referral.referralCode}"
 
         binding.premiumModeText.text = getString(
             R.string.premium_mode_value,
