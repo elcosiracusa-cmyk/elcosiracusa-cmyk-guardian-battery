@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             charging = snapshot.charging
         )
 
-        val premium = EntitlementRepository.isPremium(this)
+        val premium = BuildConfig.DEBUG || EntitlementRepository.isPremium(this)
         val mode = GuardianPreferences.batteryMode(this)
         val modeProfile = BatteryModeEngine.profile(mode)
         val budget = BatteryBudgetEngine.calculate(
@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         if (premium) {
-            val source = EntitlementRepository.premiumSource(this)
+            val source = if (BuildConfig.DEBUG) LocaleText.pick(this, "Plus test completo", "Full Plus test") else EntitlementRepository.premiumSource(this)
             val rewardDays = EntitlementRepository.rewardDaysRemaining(this)
             binding.premiumStatusText.text = if (rewardDays > 0) {
                 getString(R.string.plus_active_reward, source, rewardDays)
