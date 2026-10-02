@@ -69,4 +69,12 @@
     <string name="premium_locked_budget">Battery Budget disponibile con Plus</string>
     <string name="premium_locked_leak">Smart Leak Detector disponibile con Plus</string>
     <string name="premium_locked_charge_guard">Charge Guard disponibile con Plus</string>
+
+
+    <string name="dashboard_subtitle">La tua batteria, capita davvero.</string>
+    <string name="dna_title">Battery DNA</string>
+    <string name="dna_learning">Profilo personale in apprendimento</string>
+    <string name="dna_baseline_value">Baseline personale: ~%1$s%%/ora</string>
+    <string name="dna_baseline_learning">Baseline personale: in apprendimento</string>
+    <string name="dna_confidence_value">Affidabilità DNA: %1$d%% · %2$d campioni</string>
 </resources>
