@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Battery Guardian</string>
+    <string name="tagline">Protegge autonomia, temperatura e salute della batteria.</string>
+    <string name="battery_now">BATTERIA ADESSO</string>
+    <string name="details">Diagnostica reale</string>
+    <string name="top_apps">Attività ultime 24 ore</string>
+    <string name="loading">Caricamento…</string>
+    <string name="percent_value">%1$d%%</string>
+    <string name="score_value">Battery Score %1$d/100</string>
+    <string name="temperature_value">Temperatura: %1$.1f °C</string>
+    <string name="voltage_value">Tensione: %1$d mV</string>
+    <string name="charging_yes">Ricarica: in corso</string>
+    <string name="charging_no">Ricarica: non collegata</string>
+    <string name="usage_permission_needed">Per mostrare le app più attive serve l’accesso utilizzo di Android.</string>
+    <string name="no_usage_data">Nessun dato di utilizzo disponibile.</string>
+    <string name="usage_row">%1$s · %2$d min in primo piano</string>
+    <string name="enable_usage_access">Abilita accesso utilizzo</string>
+    <string name="open_power_saver">Apri Risparmio energetico Android</string>
+    <string name="open_optimization">Gestisci ottimizzazione batteria</string>
+    <string name="refresh">Aggiorna analisi</string>
+</resources>
