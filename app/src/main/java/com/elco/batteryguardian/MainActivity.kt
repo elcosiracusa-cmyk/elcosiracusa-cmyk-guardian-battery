@@ -80,6 +80,24 @@ class MainActivity : AppCompatActivity() {
             chargeLimit = modeProfile.chargeLimit
         )
 
+        BatteryDnaStore.addSample(
+            context = this,
+            drainPerHour = history.percentPerHour,
+            temperatureC = snapshot.temperatureC,
+            currentMa = efficiency.instantCurrentMa
+        )
+        val dnaProfile = BatteryDnaStore.profile(this)
+        val dnaComparison = BatteryDnaStore.compare(
+            context = this,
+            currentDrainPerHour = history.percentPerHour
+        )
+        val dnaAdvice = BatteryDnaAdvisor.advice(
+            comparison = dnaComparison,
+            efficiency = efficiency,
+            temperatureC = snapshot.temperatureC,
+            topApp = topApp
+        )
+
         binding.levelText.text = getString(R.string.percent_value, snapshot.level)
         binding.scoreText.text = getString(R.string.score_value, snapshot.score)
         binding.healthText.text = getString(R.string.health_value, snapshot.healthLabel)
@@ -129,6 +147,17 @@ class MainActivity : AppCompatActivity() {
 
         binding.adviceText.text = efficiency.recommendation
         binding.zeroWakeText.text = getString(R.string.zero_wake_active)
+
+        binding.dnaStatusText.text = dnaAdvice.title + " · " + dnaComparison.message
+        binding.dnaBaselineText.text = dnaProfile.averageDrainPerHour?.let {
+            getString(R.string.dna_baseline_value, formatOneDecimal(it))
+        } ?: getString(R.string.dna_baseline_learning)
+        binding.dnaConfidenceText.text = getString(
+            R.string.dna_confidence_value,
+            dnaProfile.confidence,
+            dnaProfile.samples
+        )
+        binding.dnaAdviceText.text = dnaAdvice.detail
 
         binding.premiumModeText.text = getString(
             R.string.premium_mode_value,
