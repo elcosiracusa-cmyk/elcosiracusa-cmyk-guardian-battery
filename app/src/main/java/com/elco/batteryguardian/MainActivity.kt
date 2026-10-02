@@ -29,6 +29,46 @@ class MainActivity : AppCompatActivity() {
         binding.usageAccessButton.setOnClickListener {
             startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
         }
+
+        binding.dnaButton.setOnClickListener {
+            binding.dnaCard.requestFocus()
+            binding.dnaCard.parent.requestChildFocus(binding.dnaCard, binding.dnaCard)
+        }
+
+        binding.leakButton.setOnClickListener {
+            binding.premiumCard.requestFocus()
+            binding.premiumCard.parent.requestChildFocus(binding.premiumCard, binding.premiumCard)
+        }
+
+        binding.budgetButton.setOnClickListener {
+            binding.premiumCard.requestFocus()
+            binding.premiumCard.parent.requestChildFocus(binding.premiumCard, binding.premiumCard)
+        }
+
+        binding.chargeGuardButton.setOnClickListener {
+            binding.premiumCard.requestFocus()
+            binding.premiumCard.parent.requestChildFocus(binding.premiumCard, binding.premiumCard)
+        }
+
+        binding.displayButton.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_DISPLAY_SETTINGS))
+        }
+
+        binding.widgetButton.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_HOME_SETTINGS))
+        }
+
+        binding.modeButton.setOnClickListener {
+            val current = GuardianPreferences.batteryMode(this)
+            val next = when (current) {
+                BatteryMode.DAILY -> BatteryMode.NIGHT
+                BatteryMode.NIGHT -> BatteryMode.TRAVEL
+                BatteryMode.TRAVEL -> BatteryMode.EMERGENCY
+                BatteryMode.EMERGENCY -> BatteryMode.DAILY
+            }
+            GuardianPreferences.saveMode(this, next)
+            refresh()
+        }
     }
 
     override fun onResume() {
