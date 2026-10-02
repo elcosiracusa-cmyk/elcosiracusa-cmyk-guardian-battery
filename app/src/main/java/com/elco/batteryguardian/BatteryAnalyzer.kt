@@ -14,6 +14,8 @@ object BatteryAnalyzer {
             IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         )
 
+        val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+
         val levelRaw = intent?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
         val scale = intent?.getIntExtra(BatteryManager.EXTRA_SCALE, 100) ?: 100
         val level = if (levelRaw >= 0 && scale > 0) {
@@ -30,6 +32,15 @@ object BatteryAnalyzer {
 
         val temperature = (intent?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10f
         val voltage = intent?.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0) ?: 0
+
+        val currentNowUa = batteryManager
+            .getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
+            .takeUnless { it == Int.MIN_VALUE }
+
+        val chargeCounterUah = batteryManager
+            .getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+            .takeUnless { it == Int.MIN_VALUE }
+
         val health = intent?.getIntExtra(
             BatteryManager.EXTRA_HEALTH,
             BatteryManager.BATTERY_HEALTH_UNKNOWN
@@ -46,12 +57,18 @@ object BatteryAnalyzer {
         }
 
         var score = 100
-        if (temperature >= 42f) score -= 35
-        else if (temperature >= 38f) score -= 18
-        else if (temperature >= 35f) score -= 8
+        when {
+            temperature >= 42f -> score -= 35
+            temperature >= 38f -> score -= 18
+            temperature >= 35f -> score -= 8
+        }
 
-        if (health != BatteryManager.BATTERY_HEALTH_GOOD &&
-            health != BatteryManager.BATTERY_HEALTH_UNKNOWN) score -= 30
+        if (
+            health != BatteryManager.BATTERY_HEALTH_GOOD &&
+            health != BatteryManager.BATTERY_HEALTH_UNKNOWN
+        ) {
+            score -= 30
+        }
 
         if (level <= 10) score -= 15
         else if (level <= 20) score -= 6
@@ -69,6 +86,8 @@ object BatteryAnalyzer {
             charging = charging,
             temperatureC = temperature,
             voltageMv = voltage,
+            currentNowUa = currentNowUa,
+            chargeCounterUah = chargeCounterUah,
             healthLabel = healthLabel,
             score = score.coerceIn(0, 100),
             statusMessage = message
