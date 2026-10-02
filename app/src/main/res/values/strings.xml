@@ -77,4 +77,16 @@
     <string name="dna_baseline_value">Baseline personale: ~%1$s%%/ora</string>
     <string name="dna_baseline_learning">Baseline personale: in apprendimento</string>
     <string name="dna_confidence_value">Affidabilità DNA: %1$d%% · %2$d campioni</string>
+
+
+    <string name="quick_actions">Azioni rapide</string>
+    <string name="action_dna">BATTERY DNA</string>
+    <string name="action_leak">LEAK DETECTOR</string>
+    <string name="action_budget">BATTERY BUDGET</string>
+    <string name="action_charge_guard">CHARGE GUARD</string>
+    <string name="action_widget">WIDGET</string>
+    <string name="action_display">SCHERMO</string>
+    <string name="action_mode">CAMBIA MODALITÀ BATTERIA</string>
+
+    <string name="intelligence_badge">Adaptive Energy Intelligence</string>
 </resources>

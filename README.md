@@ -15,5 +15,3 @@ Battery Guardian does not claim to force-stop other apps, overclock/underclock h
 
 ## Build
 The GitHub Actions workflow builds a debug APK on every push to main.
-
-Build trigger: Battery Guardian validation.
