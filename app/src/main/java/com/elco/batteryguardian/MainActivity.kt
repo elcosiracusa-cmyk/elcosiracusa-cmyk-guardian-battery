@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
         binding.zeroWakeText.text = getString(R.string.zero_wake_active)
 
         updateUsageSection()
+        BatteryWidgetRenderer.updateAll(this)
     }
 
     private fun updateUsageSection() {
