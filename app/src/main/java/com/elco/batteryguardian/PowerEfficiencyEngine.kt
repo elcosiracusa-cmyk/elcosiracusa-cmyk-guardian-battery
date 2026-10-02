@@ -32,17 +32,17 @@ object PowerEfficiencyEngine {
 
         val thermal = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             when (powerManager.currentThermalStatus) {
-                PowerManager.THERMAL_STATUS_NONE -> "Normale"
-                PowerManager.THERMAL_STATUS_LIGHT -> "Leggero"
-                PowerManager.THERMAL_STATUS_MODERATE -> "Moderato"
-                PowerManager.THERMAL_STATUS_SEVERE -> "Alto"
-                PowerManager.THERMAL_STATUS_CRITICAL -> "Critico"
-                PowerManager.THERMAL_STATUS_EMERGENCY -> "Emergenza"
-                PowerManager.THERMAL_STATUS_SHUTDOWN -> "Spegnimento"
-                else -> "Non disponibile"
+                PowerManager.THERMAL_STATUS_NONE -> LocaleText.pick(context, "Normale", "Normal")
+                PowerManager.THERMAL_STATUS_LIGHT -> LocaleText.pick(context, "Leggero", "Light")
+                PowerManager.THERMAL_STATUS_MODERATE -> LocaleText.pick(context, "Moderato", "Moderate")
+                PowerManager.THERMAL_STATUS_SEVERE -> LocaleText.pick(context, "Alto", "High")
+                PowerManager.THERMAL_STATUS_CRITICAL -> LocaleText.pick(context, "Critico", "Critical")
+                PowerManager.THERMAL_STATUS_EMERGENCY -> LocaleText.pick(context, "Emergenza", "Emergency")
+                PowerManager.THERMAL_STATUS_SHUTDOWN -> LocaleText.pick(context, "Spegnimento", "Shutdown")
+                else -> LocaleText.pick(context, "Non disponibile", "Unavailable")
             }
         } else {
-            "Non disponibile"
+            LocaleText.pick(context, "Non disponibile", "Unavailable")
         }
 
         val brightness = try {
@@ -76,30 +76,30 @@ object PowerEfficiencyEngine {
         } else null
 
         val pressure = when {
-            charging -> "Ricarica"
-            currentMa == null -> "Non misurabile"
-            currentMa < 250 -> "Eccellente"
-            currentMa < 600 -> "Buono"
-            currentMa < 1200 -> "Medio"
-            currentMa < 2000 -> "Alto"
-            else -> "Molto alto"
+            charging -> LocaleText.pick(context, "Ricarica", "Charging")
+            currentMa == null -> LocaleText.pick(context, "Non misurabile", "Unavailable")
+            currentMa < 250 -> LocaleText.pick(context, "Eccellente", "Excellent")
+            currentMa < 600 -> LocaleText.pick(context, "Buono", "Good")
+            currentMa < 1200 -> LocaleText.pick(context, "Medio", "Medium")
+            currentMa < 2000 -> LocaleText.pick(context, "Alto", "High")
+            else -> LocaleText.pick(context, "Molto alto", "Very high")
         }
 
         val recommendation = when {
             charging && level >= 90 ->
-                "Carica oltre il 90%: evita di lasciarla collegata inutilmente."
-            thermal == "Critico" || thermal == "Emergenza" ->
-                "Carico termico critico: interrompi attività pesanti e ricarica."
+                LocaleText.pick(context, "Carica oltre il 90%: evita di lasciarla collegata inutilmente.", "Charge above 90%: avoid leaving the phone plugged in unnecessarily.")
+            thermal == LocaleText.pick(context, "Critico", "Critical") || thermal == LocaleText.pick(context, "Emergenza", "Emergency") ->
+                LocaleText.pick(context, "Carico termico critico: interrompi attività pesanti e ricarica.", "Critical thermal load: stop heavy activity and charging.")
             brightness != null && brightness >= 80 && !charging ->
-                "Luminosità molto alta: ridurla è uno degli interventi più efficaci."
+                LocaleText.pick(context, "Luminosità molto alta: ridurla è uno degli interventi più efficaci.", "Very high brightness: lowering it is one of the most effective actions.")
             currentMa != null && currentMa >= 1500 && !charging ->
-                "Assorbimento istantaneo elevato: controlla schermo, GPS, video e app pesanti."
+                LocaleText.pick(context, "Assorbimento istantaneo elevato: controlla schermo, GPS, video e app pesanti.", "High instantaneous drain: check display, GPS, video and heavy apps.")
             level <= 20 && !saver && !charging ->
-                "Attiva il risparmio energetico Android: batteria sotto il 20%."
+                LocaleText.pick(context, "Attiva il risparmio energetico Android: batteria sotto il 20%.", "Enable Android Battery Saver: battery below 20%.")
             saver ->
-                "Risparmio energetico attivo. Battery Guardian resta in modalità Zero-Wake."
+                LocaleText.pick(context, "Risparmio energetico attivo. Battery Guardian resta in modalità Zero-Wake.", "Battery Saver is active. Battery Guardian remains in Zero-Wake mode.")
             else ->
-                "Nessun intervento urgente: mantieni attiva la modalità Zero-Wake."
+                LocaleText.pick(context, "Nessun intervento urgente: mantieni attiva la modalità Zero-Wake.", "No urgent action required: keep Zero-Wake mode active.")
         }
 
         return PowerEfficiencyResult(
