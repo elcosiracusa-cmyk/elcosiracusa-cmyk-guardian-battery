@@ -14,33 +14,37 @@ data class AppUsageItem(
 
 object UsageAnalyzer {
 
-    fun hasUsageAccess(context: Context): Boolean {
-        val appOps = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+    fun hasUsageAccess(context: Context): Boolean = runCatching {
+        val appOps = context.getSystemService(Context.APP_OPS_SERVICE) as? AppOpsManager
+            ?: return@runCatching false
         val mode = appOps.checkOpNoThrow(
             AppOpsManager.OPSTR_GET_USAGE_STATS,
             Process.myUid(),
             context.packageName
         )
-        return mode == AppOpsManager.MODE_ALLOWED
-    }
+        mode == AppOpsManager.MODE_ALLOWED
+    }.getOrDefault(false)
 
-    fun topApps(context: Context, limit: Int = 5): List<AppUsageItem> {
-        if (!hasUsageAccess(context)) return emptyList()
+    fun topApps(context: Context, limit: Int = 5): List<AppUsageItem> = runCatching {
+        if (!hasUsageAccess(context)) return@runCatching emptyList()
 
-        val manager = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val manager = context.getSystemService(Context.USAGE_STATS_SERVICE) as? UsageStatsManager
+            ?: return@runCatching emptyList()
+
         val now = System.currentTimeMillis()
         val from = now - 24L * 60L * 60L * 1000L
         val pm = context.packageManager
 
-        return manager.queryUsageStats(
+        val stats = manager.queryUsageStats(
             UsageStatsManager.INTERVAL_DAILY,
             from,
             now
-        )
-            .asSequence()
+        ) ?: emptyList()
+
+        stats.asSequence()
             .filter { it.totalTimeInForeground > 0 }
             .sortedByDescending { it.totalTimeInForeground }
-            .take(limit)
+            .take(limit.coerceAtLeast(1))
             .map {
                 val label = try {
                     val info: ApplicationInfo = pm.getApplicationInfo(it.packageName, 0)
@@ -55,5 +59,5 @@ object UsageAnalyzer {
                 )
             }
             .toList()
-    }
+    }.getOrDefault(emptyList())
 }
