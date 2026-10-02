@@ -467,6 +467,67 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/referralCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#142B24"
+            app:cardCornerRadius="22dp"
+            app:strokeColor="@color/green_primary"
+            app:strokeWidth="1dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INVITA 5 AMICI"
+                    android:textColor="@color/green_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Ottieni Battery Guardian Plus gratis per 30 giorni."
+                    android:textColor="@color/text_primary" />
+                <TextView
+                    android:id="@+id/referralProgressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="0/5 amici verificati"
+                    android:textColor="@color/yellow_accent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <ProgressBar
+                    android:id="@+id/referralProgress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="8dp"
+                    android:max="5"
+                    android:progress="0" />
+                <TextView
+                    android:id="@+id/referralCodeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Codice invito: —"
+                    android:textColor="@color/text_secondary" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/inviteFriendsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="12dp"
+                    android:text="INVITA AMICI"
+                    app:backgroundTint="@color/green_primary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
