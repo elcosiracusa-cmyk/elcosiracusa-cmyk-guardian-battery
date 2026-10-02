@@ -5,6 +5,8 @@ data class BatterySnapshot(
     val charging: Boolean,
     val temperatureC: Float,
     val voltageMv: Int,
+    val currentNowUa: Int?,
+    val chargeCounterUah: Int?,
     val healthLabel: String,
     val score: Int,
     val statusMessage: String
