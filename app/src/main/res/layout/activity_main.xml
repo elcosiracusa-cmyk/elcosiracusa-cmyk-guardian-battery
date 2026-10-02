@@ -118,7 +118,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/widgetButton"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="68dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
                 android:text="@string/action_widget"
@@ -127,7 +127,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/displayButton"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="68dp"
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:text="@string/action_display"
@@ -137,7 +137,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/modeButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="68dp"
             android:layout_marginTop="10dp"
             android:text="@string/action_mode"
             app:backgroundTint="@color/green_primary" />
