@@ -47,13 +47,13 @@ object BatteryAnalyzer {
         ) ?: BatteryManager.BATTERY_HEALTH_UNKNOWN
 
         val healthLabel = when (health) {
-            BatteryManager.BATTERY_HEALTH_GOOD -> "Buona"
-            BatteryManager.BATTERY_HEALTH_OVERHEAT -> "Surriscaldata"
-            BatteryManager.BATTERY_HEALTH_DEAD -> "Critica"
-            BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE -> "Sovratensione"
-            BatteryManager.BATTERY_HEALTH_COLD -> "Troppo fredda"
-            BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE -> "Anomalia"
-            else -> "Non disponibile"
+            BatteryManager.BATTERY_HEALTH_GOOD -> LocaleText.pick(context, "Buona", "Good")
+            BatteryManager.BATTERY_HEALTH_OVERHEAT -> LocaleText.pick(context, "Surriscaldata", "Overheating")
+            BatteryManager.BATTERY_HEALTH_DEAD -> LocaleText.pick(context, "Critica", "Critical")
+            BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE -> LocaleText.pick(context, "Sovratensione", "Over voltage")
+            BatteryManager.BATTERY_HEALTH_COLD -> LocaleText.pick(context, "Troppo fredda", "Too cold")
+            BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE -> LocaleText.pick(context, "Anomalia", "Anomaly")
+            else -> LocaleText.pick(context, "Non disponibile", "Unavailable")
         }
 
         var score = 100
@@ -74,11 +74,11 @@ object BatteryAnalyzer {
         else if (level <= 20) score -= 6
 
         val message = when {
-            temperature >= 42f -> "Temperatura molto alta: riduci carico e ricarica."
-            temperature >= 38f -> "Temperatura elevata: evita giochi, GPS e ricarica rapida."
-            level <= 15 && !charging -> "Batteria bassa: attiva il risparmio energetico."
-            charging && level >= 90 -> "Carica alta: scollega quando non serve."
-            else -> "Parametri nella norma. Continua il monitoraggio."
+            temperature >= 42f -> LocaleText.pick(context, "Temperatura molto alta: riduci carico e ricarica.", "Very high temperature: reduce load and charging.")
+            temperature >= 38f -> LocaleText.pick(context, "Temperatura elevata: evita giochi, GPS e ricarica rapida.", "High temperature: avoid gaming, GPS and fast charging.")
+            level <= 15 && !charging -> LocaleText.pick(context, "Batteria bassa: attiva il risparmio energetico.", "Low battery: enable Battery Saver.")
+            charging && level >= 90 -> LocaleText.pick(context, "Carica alta: scollega quando non serve.", "High charge level: unplug when charging is no longer needed.")
+            else -> LocaleText.pick(context, "Parametri nella norma. Continua il monitoraggio.", "Parameters are normal. Keep monitoring.")
         }
 
         return BatterySnapshot(
