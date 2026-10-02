@@ -57,4 +57,16 @@
     <string name="widget_last_update">Aggiornato: %1$s</string>
     <string name="widget_refresh">AGGIORNA</string>
     <string name="widget_loading">Caricamento…</string>
+
+
+    <string name="premium_title">Battery Guardian Plus</string>
+    <string name="premium_unlocked">PLUS ATTIVO</string>
+    <string name="premium_locked">PLUS BLOCCATO · sblocco previsto a 0,99 €</string>
+    <string name="premium_mode_value">Modalità: %1$s</string>
+    <string name="premium_budget_value">Battery Budget: %1$d h · riserva %2$d%% · massimo ~%3$s%%/ora</string>
+    <string name="premium_leak_value">%1$s · causa probabile: %2$s</string>
+    <string name="premium_charge_guard_value">%1$s · %2$s</string>
+    <string name="premium_locked_budget">Battery Budget disponibile con Plus</string>
+    <string name="premium_locked_leak">Smart Leak Detector disponibile con Plus</string>
+    <string name="premium_locked_charge_guard">Charge Guard disponibile con Plus</string>
 </resources>
