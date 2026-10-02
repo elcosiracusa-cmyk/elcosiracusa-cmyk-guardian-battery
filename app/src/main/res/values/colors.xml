@@ -1,0 +1,6 @@
+<resources>
+    <color name="bg_dark">#07110D</color>
+    <color name="green_primary">#39E58C</color>
+    <color name="green_secondary">#7CF7B5</color>
+    <color name="surface_dark">#101B16</color>
+</resources>
