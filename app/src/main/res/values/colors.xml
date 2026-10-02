@@ -1,6 +1,15 @@
 <resources>
     <color name="bg_dark">#07110D</color>
+    <color name="surface_dark">#101B16</color>
+    <color name="surface_alt">#13231C</color>
     <color name="green_primary">#39E58C</color>
     <color name="green_secondary">#7CF7B5</color>
-    <color name="surface_dark">#101B16</color>
+    <color name="cyan_accent">#29D6FF</color>
+    <color name="blue_accent">#5A8CFF</color>
+    <color name="yellow_accent">#FFD84D</color>
+    <color name="orange_accent">#FF9F43</color>
+    <color name="red_accent">#FF5D6C</color>
+    <color name="purple_accent">#B58CFF</color>
+    <color name="text_primary">#F4FFF8</color>
+    <color name="text_secondary">#A9C2B4</color>
 </resources>
