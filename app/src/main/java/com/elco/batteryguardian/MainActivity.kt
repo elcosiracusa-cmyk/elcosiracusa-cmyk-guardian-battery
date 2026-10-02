@@ -52,6 +52,34 @@ class MainActivity : AppCompatActivity() {
             charging = snapshot.charging
         )
 
+        val premium = EntitlementRepository.isPremium(this)
+        val mode = GuardianPreferences.batteryMode(this)
+        val modeProfile = BatteryModeEngine.profile(mode)
+        val budget = BatteryBudgetEngine.calculate(
+            currentLevel = snapshot.level,
+            targetHours = modeProfile.targetHours,
+            reservePercent = modeProfile.reservePercent,
+            observedDrainPerHour = history.percentPerHour
+        )
+        val topApp = if (UsageAnalyzer.hasUsageAccess(this)) {
+            UsageAnalyzer.topApps(this, 1).firstOrNull()
+        } else null
+        val leak = BatteryLeakDetector.diagnose(
+            charging = snapshot.charging,
+            temperatureC = snapshot.temperatureC,
+            brightnessPercent = efficiency.brightnessPercent,
+            instantCurrentMa = efficiency.instantCurrentMa,
+            observedDrainPerHour = history.percentPerHour,
+            budget = budget,
+            topApp = topApp
+        )
+        val chargeGuard = ChargeGuardEngine.evaluate(
+            charging = snapshot.charging,
+            level = snapshot.level,
+            temperatureC = snapshot.temperatureC,
+            chargeLimit = modeProfile.chargeLimit
+        )
+
         binding.levelText.text = getString(R.string.percent_value, snapshot.level)
         binding.scoreText.text = getString(R.string.score_value, snapshot.score)
         binding.healthText.text = getString(R.string.health_value, snapshot.healthLabel)
@@ -101,6 +129,36 @@ class MainActivity : AppCompatActivity() {
 
         binding.adviceText.text = efficiency.recommendation
         binding.zeroWakeText.text = getString(R.string.zero_wake_active)
+
+        binding.premiumModeText.text = getString(
+            R.string.premium_mode_value,
+            modeProfile.title
+        )
+
+        if (premium) {
+            binding.premiumStatusText.text = getString(R.string.premium_unlocked)
+            binding.premiumBudgetText.text = getString(
+                R.string.premium_budget_value,
+                modeProfile.targetHours,
+                modeProfile.reservePercent,
+                formatOneDecimal(budget.allowedDrainPerHour)
+            )
+            binding.premiumLeakText.text = getString(
+                R.string.premium_leak_value,
+                leak.title,
+                leak.likelyCause
+            )
+            binding.premiumChargeGuardText.text = getString(
+                R.string.premium_charge_guard_value,
+                chargeGuard.title,
+                chargeGuard.message
+            )
+        } else {
+            binding.premiumStatusText.text = getString(R.string.premium_locked)
+            binding.premiumBudgetText.text = getString(R.string.premium_locked_budget)
+            binding.premiumLeakText.text = getString(R.string.premium_locked_leak)
+            binding.premiumChargeGuardText.text = getString(R.string.premium_locked_charge_guard)
+        }
 
         updateUsageSection()
         BatteryWidgetRenderer.updateAll(this)
