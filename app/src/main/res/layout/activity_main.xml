@@ -3,53 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_dark"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:text="Battery Guardian"
+            android:textColor="@color/text_primary"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/tagline"
-            android:textAppearance="?attr/textAppearanceBodyMedium" />
+            android:layout_marginTop="2dp"
+            android:text="@string/dashboard_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="24dp">
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="@color/surface_alt"
+            app:cardCornerRadius="26dp"
+            app:strokeColor="@color/green_primary"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="22dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/battery_now"
+                    android:textColor="@color/green_secondary"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/levelText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="--%"
-                    android:textSize="46sp"
+                    android:textColor="@color/green_primary"
+                    android:textSize="54sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -57,6 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Battery Score --/100"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -65,7 +74,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/loading" />
+                    android:text="@string/loading"
+                    android:textColor="@color/text_secondary" />
 
                 <TextView
                     android:id="@+id/zeroWakeText"
@@ -73,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/zero_wake_active"
+                    android:textColor="@color/cyan_accent"
                     android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -80,51 +91,159 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="20dp"
             android:text="@string/live_efficiency"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/currentText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/loading" />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView
-            android:id="@+id/powerText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:cardBackgroundColor="#163126"
+                app:cardCornerRadius="18dp">
 
-        <TextView
-            android:id="@+id/efficiencyText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
 
-        <TextView
-            android:id="@+id/autonomyText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+                    <TextView
+                        android:id="@+id/currentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/loading"
+                        android:textColor="@color/green_secondary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/powerText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/loading"
+                        android:textColor="@color/text_primary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                app:cardBackgroundColor="#152A36"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/efficiencyText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/loading"
+                        android:textColor="@color/cyan_accent"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/autonomyText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/loading"
+                        android:textColor="@color/text_primary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/drainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="10dp"
+            android:background="#231F2B"
+            android:padding="12dp"
+            android:text="@string/loading"
+            android:textColor="@color/yellow_accent"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="#20182D"
+            app:cardCornerRadius="22dp"
+            app:strokeColor="@color/purple_accent"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dna_title"
+                    android:textColor="@color/purple_accent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dnaStatusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="@string/dna_learning"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dnaBaselineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/dnaConfidenceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/dnaAdviceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/yellow_accent" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="20dp"
             android:text="@string/details"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -132,56 +251,66 @@
             android:id="@+id/healthText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="8dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/temperatureText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/thermalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/voltageText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/brightnessText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/chargeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/powerSaverStateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/loading" />
+            android:layout_marginTop="5dp"
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            app:cardCornerRadius="20dp">
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#2A2415"
+            app:cardCornerRadius="22dp"
+            app:strokeColor="@color/yellow_accent"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,6 +322,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/premium_title"
+                    android:textColor="@color/yellow_accent"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -202,6 +332,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="@string/premium_locked"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold" />
 
                 <TextView
@@ -209,36 +340,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/loading" />
+                    android:text="@string/loading"
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/premiumBudgetText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/loading" />
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/premiumLeakText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/loading" />
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/premiumChargeGuardText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/loading" />
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/text_primary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="20dp"
             android:text="@string/top_apps"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -247,7 +383,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/loading" />
+            android:text="@string/loading"
+            android:textColor="@color/text_primary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/usageAccessButton"
@@ -261,7 +398,7 @@
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="16dp"
             android:text="@string/open_power_saver" />
 
         <com.google.android.material.button.MaterialButton
@@ -279,6 +416,5 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:text="@string/refresh" />
-
     </LinearLayout>
 </ScrollView>
