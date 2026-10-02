@@ -89,4 +89,13 @@
     <string name="action_mode">CAMBIA MODALITÀ BATTERIA</string>
 
     <string name="intelligence_badge">Adaptive Energy Intelligence</string>
+
+    <string name="referral_title">INVITA 5 AMICI</string>
+    <string name="referral_subtitle">Ottieni Battery Guardian Plus gratis per 30 giorni.</string>
+    <string name="referral_progress">%1$d/%2$d amici verificati</string>
+    <string name="referral_code">Codice invito: %1$s</string>
+    <string name="invite_friends">INVITA AMICI</string>
+    <string name="share_chooser">Invita amici</string>
+    <string name="plus_active_source">PLUS ATTIVO · %1$s</string>
+    <string name="plus_active_reward">PLUS ATTIVO · %1$s · %2$d giorni rimasti</string>
 </resources>
