@@ -507,7 +507,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="INVITA 5 AMICI"
+                    android:text="@string/referral_title"
                     android:textColor="@color/green_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -515,14 +515,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Ottieni Battery Guardian Plus gratis per 30 giorni."
+                    android:text="@string/referral_subtitle"
                     android:textColor="@color/text_primary" />
                 <TextView
                     android:id="@+id/referralProgressText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="0/5 amici verificati"
+                    android:text="@string/referral_progress"
                     android:textColor="@color/yellow_accent"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -539,14 +539,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Codice invito: —"
+                    android:text="@string/referral_code"
                     android:textColor="@color/text_secondary" />
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/inviteFriendsButton"
                     android:layout_width="match_parent"
                     android:layout_height="68dp"
                     android:layout_marginTop="12dp"
-                    android:text="INVITA AMICI"
+                    android:text="@string/invite_friends"
                     app:backgroundTint="@color/green_primary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
