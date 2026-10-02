@@ -17,6 +17,18 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("boolean", "QA_PLUS", "true")
+            applicationIdSuffix = ".qa"
+            versionNameSuffix = "-qa-plus"
+        }
+        release {
+            buildConfigField("boolean", "QA_PLUS", "false")
+        }
     }
 
     compileOptions {
