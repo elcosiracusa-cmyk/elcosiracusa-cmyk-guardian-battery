@@ -28,7 +28,103 @@
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/quick_actions"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dnaButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/action_dna"
+                app:backgroundTint="@color/purple_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/leakButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/action_leak"
+                app:backgroundTint="@color/orange_accent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/budgetButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/action_budget"
+                app:backgroundTint="@color/blue_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chargeGuardButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/action_charge_guard"
+                app:backgroundTint="@color/green_primary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/widgetButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/action_widget"
+                app:backgroundTint="@color/cyan_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/displayButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/action_display"
+                app:backgroundTint="@color/orange_accent" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/modeButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/action_mode"
+            app:backgroundTint="@color/green_primary" />
+
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/batterySummaryCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -181,6 +277,7 @@
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dnaCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -304,6 +401,7 @@
             android:textColor="@color/text_primary" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/premiumCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -389,7 +487,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/usageAccessButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="12dp"
             android:text="@string/enable_usage_access" />
 
@@ -397,7 +495,7 @@
             android:id="@+id/powerSaverButton"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:text="@string/open_power_saver" />
 
@@ -405,14 +503,14 @@
             android:id="@+id/optimizationButton"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:text="@string/open_optimization" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/refreshButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:text="@string/refresh" />
