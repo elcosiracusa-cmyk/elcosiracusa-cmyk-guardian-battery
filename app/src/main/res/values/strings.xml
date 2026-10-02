@@ -87,4 +87,6 @@
     <string name="action_widget">WIDGET</string>
     <string name="action_display">SCHERMO</string>
     <string name="action_mode">CAMBIA MODALITÀ BATTERIA</string>
+
+    <string name="intelligence_badge">Adaptive Energy Intelligence</string>
 </resources>
