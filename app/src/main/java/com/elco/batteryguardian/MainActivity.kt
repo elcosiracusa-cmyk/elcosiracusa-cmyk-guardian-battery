@@ -219,7 +219,13 @@ class MainActivity : AppCompatActivity() {
         )
 
         if (premium) {
-            binding.premiumStatusText.text = getString(R.string.premium_unlocked)
+            val source = EntitlementRepository.premiumSource(this)
+            val rewardDays = EntitlementRepository.rewardDaysRemaining(this)
+            binding.premiumStatusText.text = if (rewardDays > 0) {
+                "PLUS ATTIVO · $source · $rewardDays giorni rimasti"
+            } else {
+                "PLUS ATTIVO · $source"
+            }
             binding.premiumBudgetText.text = getString(
                 R.string.premium_budget_value,
                 modeProfile.targetHours,
